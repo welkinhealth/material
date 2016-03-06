@@ -444,7 +444,13 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
 
       var thumbPosition = (percent * 100) + '%';
 
-      thumbContainer.css(vertical ? 'bottom' : 'left', thumbPosition);
+      if (vertical) {
+        thumbContainer.css('bottom', thumbPosition);
+      }
+      else {
+        $mdUtil.bidiProperty(thumbContainer, 'left', 'right', thumbPosition);
+      }
+
       activeTrack.css(vertical ? 'height' : 'width', thumbPosition);
 
       element.toggleClass('_md-min', percent === 0);
@@ -548,6 +554,10 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
       var offset = vertical ? sliderDimensions.top : sliderDimensions.left;
       var size = vertical ? sliderDimensions.height : sliderDimensions.width;
       var calc = (position - offset) / size;
+
+      if (!vertical && $mdUtil.bidi() === 'rtl') {
+        calc = 1 - calc;
+      }
 
       return Math.max(0, Math.min(1, vertical ? 1 - calc : calc));
     }
