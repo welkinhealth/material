@@ -64,6 +64,7 @@ var MD_CONTACT_CHIPS_TEMPLATE = '\
               md-item-text="$mdContactChipsCtrl.itemName(item)"\
               md-no-cache="true"\
               md-autoselect\
+              md-min-length="$mdContactChipsCtrl.minLength"\
               placeholder="{{$mdContactChipsCtrl.contacts.length == 0 ?\
                   $mdContactChipsCtrl.placeholder : $mdContactChipsCtrl.secondaryPlaceholder}}">\
             <div class="md-contact-suggestion">\
@@ -118,7 +119,8 @@ function MdContactChips($mdTheming, $mdUtil) {
       contactEmail: '@mdContactEmail',
       contacts: '=ngModel',
       requireMatch: '=?mdRequireMatch',
-      highlightFlags: '@?mdHighlightFlags'
+      highlightFlags: '@?mdHighlightFlags',
+      minLength: "=?mdMinLength"
     }
   };
 
