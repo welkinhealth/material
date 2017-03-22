@@ -24,6 +24,7 @@ module.exports = {
     'src/core/style/mixins.scss'
   ],
   scssBaseFiles: [
+    'src/core/style/welkin_variables.scss',
     'src/core/style/color-palette.scss',
     'src/core/style/variables.scss',
     'src/core/style/mixins.scss',
