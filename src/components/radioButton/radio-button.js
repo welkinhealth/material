@@ -318,7 +318,7 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
 
       if (checked === lastChecked) return;
 
-      if (element[0].parentNode.nodeName.toLowerCase() !== 'md-radio-group') {
+      if (element[0].parentNode && element[0].parentNode.nodeName.toLowerCase() !== 'md-radio-group') {
         // If the radioButton is inside a div, then add class so highlighting will work
         element.parent().toggleClass(CHECKED_CSS, checked);
       }
